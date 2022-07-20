@@ -1,11 +1,40 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
+import styles from "./header.module.css"
 
 type Props = {}
 
 const Header = (props: Props) => {
+  const header = useRef()
+  const topHeader = useRef()
+  const img = useRef()
+  useEffect(() => {
+    window.onscroll = () => {
+      scrollHandler()
+    }
+
+    const scrollHandler = () => {
+      if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+        header.current.classList.add("sticky");
+        header.current.classList.add("top-0");
+        header.current.classList.add("shadow-md");
+        topHeader.current.classList.add("hidden");
+        header.current.classList.add("animate-[wiggle_0.4s_ease-in-out]");
+        img.current.classList.add("py-4")
+      }
+      else if(document.documentElement.scrollTop == 0) {
+        header.current.classList.remove("sticky");
+        header.current.classList.remove("top-0");
+        header.current.classList.remove("shadow-md");
+        topHeader.current.classList.remove("hidden")
+        header.current.classList.remove("animate-[wiggle_0.4s_ease-in-out]")
+        img.current.classList.remove("py-4")
+      }
+    }
+  }, [])
+
   return (
-    <header>
-      <div id='abc' className="bg-[#373839]">
+    <header className='bg-white' ref={header} >
+      <div ref={topHeader} id='abc' className="bg-[#373839] animate-[wiggle_0.4s_ease-in-out]" >
         <nav className='flex justify-between max-w-[1170px] mx-auto py-4'>
           <ul className='flex'>
             <li className='relative separate'>
@@ -41,7 +70,7 @@ const Header = (props: Props) => {
       </div>
 
       <div className="max-w-[1170px] mx-auto">
-        <div className="py-8 flex justify-between items-center border-b">
+        <div ref={img} className="py-8 flex justify-between items-center border-b">
           <div className="max-w-[200px]">
             <a className='' href="#">
               <img src="http://mauweb.monamedia.net/dogotaynguyen/wp-content/uploads/2018/08/logo-mona-wooden-01.png" alt="" />
