@@ -1,6 +1,7 @@
 import React from 'react'
 import LayoutAdmin from '../components/layout/admin'
 
+
 type Props = {}
 
 const AdminPage = (props: Props) => {
