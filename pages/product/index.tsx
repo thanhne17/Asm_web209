@@ -5,7 +5,7 @@ type Props = {}
 
 const Product = (props: Props) => {
     return (
-        <SiteLayout>
+        
             <main className='py-4'>
                 <div className="w-[1170px] mx-auto flex justify-between pt-[20px] pb-[20px]">
                     <div className="">
@@ -116,7 +116,7 @@ const Product = (props: Props) => {
                     </div>
                 </div>
             </main>
-        </SiteLayout>
+      
     )
 }
 
