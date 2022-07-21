@@ -1,5 +1,5 @@
 import React from 'react'
-import { Outlet } from 'react-router-dom'
+
 import { LayoutProps } from '../../model/layout'
 import Footer from '../Footer/Footer'
 import Header from '../Header/Header'
@@ -11,6 +11,7 @@ const SiteLayout = ({children}: LayoutProps) => {
         <Header />
         {children}
         <Footer />
+        
     </div>
   )
 }

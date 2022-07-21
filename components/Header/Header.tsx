@@ -33,7 +33,7 @@ const Header = (props: Props) => {
   }, [])
 
   return (
-    <header className='bg-white' ref={header} >
+    <header className='bg-white z-50' ref={header} >
       <div ref={topHeader} id='abc' className="bg-[#373839] animate-[wiggle_0.4s_ease-in-out]" >
         <nav className='flex justify-between max-w-[1170px] mx-auto py-4'>
           <ul className='flex'>
@@ -69,8 +69,8 @@ const Header = (props: Props) => {
         </nav>
       </div>
 
-      <div className="max-w-[1170px] mx-auto">
-        <div ref={img} className="py-8 flex justify-between items-center border-b">
+      <div className="max-w-[1170px] mx-auto border-b">
+        <div ref={img} className="py-8 flex justify-between items-center">
           <div className="max-w-[200px]">
             <a className='' href="#">
               <img src="http://mauweb.monamedia.net/dogotaynguyen/wp-content/uploads/2018/08/logo-mona-wooden-01.png" alt="" />
