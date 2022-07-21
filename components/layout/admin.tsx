@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
-import { LayoutProps } from '../../models/layout'
+import { LayoutProps } from '../../model/layout'
+
 
 
 

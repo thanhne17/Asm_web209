@@ -1,5 +1,5 @@
 import React from 'react'
-import LayoutAdmin from '../components/layouts/admin'
+import LayoutAdmin from '../components/layout/admin'
 
 type Props = {}
 

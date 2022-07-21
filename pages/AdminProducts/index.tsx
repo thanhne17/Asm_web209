@@ -1,7 +1,7 @@
 import { GetStaticPathsContext, GetStaticProps, GetStaticPropsContext } from 'next'
 import Link from 'next/link'
 import React from 'react'
-import LayoutAdmin from '../../components/layouts/admin'
+import LayoutAdmin from '../../components/layout/admin'
 import { ProductType } from '../../types/products'
 
 type ProductProps = {
