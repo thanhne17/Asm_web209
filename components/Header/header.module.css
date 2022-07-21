@@ -6,3 +6,7 @@
         transform: translateY(0);
     }
 }
+
+.active {
+    @apply text-[#333]
+}

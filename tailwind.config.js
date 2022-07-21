@@ -16,9 +16,14 @@ module.exports = {
         },
         transitionProperty: {
           'transition1': '0.6s cubic-bezier(0.83, 0, 0.17, 1)'
-        }
+        },
+        gridTemplateRows: {
+          '[auto,auto,1fr]': 'auto auto 1fr',
+        },
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/aspect-ratio'),
+  ],
 }
