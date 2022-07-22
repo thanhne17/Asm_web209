@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
+import BreadCrumds from '../../components/BreadCrumd'
 import SiteLayout from '../../components/layout/SiteLayout'
 
 type Props = {}
@@ -11,7 +12,7 @@ const Product = (props: Props) => {
                 <div className="w-[1170px] mx-auto flex justify-between pt-[20px] pb-[20px]">
                     <div className="">
                         <div>
-                            Trang chủ / Cửa hàng
+                            <BreadCrumds />
                         </div>
                         <div>
                             <i className="fa-solid fa-bars"></i> Lọc

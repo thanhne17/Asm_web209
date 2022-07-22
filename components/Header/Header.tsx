@@ -64,12 +64,16 @@ const Header = (props: Props) => {
 
             <ul className='flex'>
               <li className='flex items-center'>
-                <a className='text-white text-xs' href="#">
-                  Đăng nhập/
-                </a>
-                <a className='text-white text-xs' href="#">
-                  Đăng kí
-                </a>
+                <Link href="/auth">
+                  <a className='text-white text-xs'>
+                    Đăng nhập/
+                  </a>
+                </Link>
+                <Link href="/auth">
+                  <a className='text-white text-xs'>
+                    Đăng kí
+                  </a>
+                </Link>
               </li>
             </ul>
           </nav>
