@@ -2,9 +2,6 @@ import Link from 'next/link'
 import React from 'react'
 import { LayoutProps } from '../../model/layout'
 
-
-
-
 const LayoutAdmin = ({ children }: LayoutProps) => {
     return (
         <div>

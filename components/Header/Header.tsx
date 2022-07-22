@@ -85,7 +85,7 @@ const Header = (props: Props) => {
 
             <div className="">
               <form action="" className='flex items-center'>
-                <div className="separate relative">
+                <div className="separate relative min-h-[48px] bg-[#f5f5f5]">
                   <select className='bg-[#f5f5f5] p-3' name="" id="">
                     <option value="1">All</option>
                     <option value="2">Bình hoa gỗ</option>
