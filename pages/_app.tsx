@@ -7,6 +7,7 @@ import SiteLayout from '../components/layout/SiteLayout'
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const LayoutWrapper = Component.Layout ?? SiteLayout
   return (<LayoutWrapper><Component {...pageProps} />
-</LayoutWrapper>)}
+  </LayoutWrapper>)
+}
 
 export default MyApp

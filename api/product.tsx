@@ -1,7 +1,12 @@
 import { ProductType } from "../types/products";
 import instance from "./instance";
 
-export const list = () => {
+export const list = (url:any) => {
+    // const url = "/products";
+    return instance.get(url);
+}
+
+export const getAll = () => {
     const url = "/products";
     return instance.get(url);
 }
@@ -11,8 +16,8 @@ export const remove = (_id:number) => {
     return instance.delete(url)
 }
 
-export const detail = (_id: string | undefined) => {
-    const url = `/product/${_id}`;
+export const detail = (slug: any | undefined) => {
+    const url = `/product/${slug}`;
     return instance.get(url);
 }
 
@@ -24,4 +29,9 @@ export const create = (product: ProductType) => {
 export const update = (product: ProductType) => {
     const url = `/product/${product._id}`;
     return instance.put(url, product)
+}
+
+export const searchProduct = (query: string) => {
+    const url = `/product?q=${query}`;
+    return instance.get(url)
 }
