@@ -1,15 +1,20 @@
 import Link from 'next/link'
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import styles from "./header.module.css"
+import Tippy from "@tippyjs/react/headless"
+import "tippy.js/dist/tippy.css"
+import { ArrowCircleUpIcon } from '@heroicons/react/solid'
+import ProductSearch from '../Search'
 
 type Props = {}
 
 const Header = (props: Props) => {
-  const header = useRef()
-  const topHeader = useRef()
-  const img = useRef()
-  const btt = useRef()
+  const header = useRef<HTMLSpanElement>(null)
+  const topHeader = useRef<HTMLSpanElement>(null)
+  const img = useRef<HTMLSpanElement>(null)
+  const btt = useRef<HTMLSpanElement>(null)
+
   useEffect(() => {
     window.onscroll = () => {
       scrollHandler()
@@ -98,14 +103,7 @@ const Header = (props: Props) => {
                     <option value="5">Lục bình gỗ</option>
                   </select>
                 </div>
-                <div className="min-w-[300px]">
-                  <input className='bg-[#f5f5f5] p-3 outline-0 w-full indent-1' type="text" placeholder='Tìm kiếm sản phẩm...' />
-                </div>
-                <div className="bg-[#33c9db] p-3">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="white" strokeWidth="2">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                  </svg>
-                </div>
+                <ProductSearch />
               </form>
             </div>
 
@@ -133,9 +131,9 @@ const Header = (props: Props) => {
 
         <div className="border-b w-[1170px] mx-auto"></div>
       </header>
-      <div onClick={()=>{
-          document.body.scrollTop = 0;
-          document.documentElement.scrollTop = 0;
+      <div onClick={() => {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
       }} ref={btt} className="fixed bottom-[20px] right-[20px] hidden p-2 bg-black rounded-full cursor-pointer">
         <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="white" strokeWidth="2">
           <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />

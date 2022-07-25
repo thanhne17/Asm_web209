@@ -4,11 +4,11 @@ import style from "./signin.module.css"
 type Props = {}
 
 const Signin = (props: Props) => {
-    const frontCard = useRef();
-    const signUpBtn = useRef();
-    const loginBtn = useRef();
-    const userEmailInp = useRef();
-    const userFNameInp = useRef();
+    const frontCard = useRef<HTMLSpanElement>(null);
+    const signUpBtn = useRef<HTMLSpanElement>(null);
+    const loginBtn = useRef<HTMLSpanElement>(null);
+    const userEmailInp = useRef<HTMLSpanElement>(null);
+    const userFNameInp = useRef<HTMLSpanElement>(null);
 
     useEffect(() => {
         signUpBtn.current.addEventListener("click", () => {
