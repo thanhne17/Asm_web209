@@ -96,13 +96,14 @@ const ProductDetai = (props: Props) => {
                     <BreadCrumds />
                     {/* Image gallery */}
                     <div className="mt-6 flex">
-                        <div className="rounded-lg overflow-hidden lg:block min-w-[40%] mr-12">
-                            <img
+                        <div className="lg:block w-[40%] mr-12">
+                            <Image
+                                layout='responsive'
                                 width="100%"
                                 height="100%"
                                 src={props.data?.image[0]}
                                 alt={product.images[0].alt}
-                                className="object-center object-cover"
+                                className="object-center object-cover rounded-lg"
                             />
                         </div>
 

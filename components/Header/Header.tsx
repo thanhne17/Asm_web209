@@ -10,10 +10,11 @@ import ProductSearch from '../Search'
 type Props = {}
 
 const Header = (props: Props) => {
+  const [show, setShow] = useState(false);
   const header = useRef<HTMLSpanElement>(null)
-  const topHeader = useRef<HTMLSpanElement>(null)
-  const img = useRef<HTMLSpanElement>(null)
-  const btt = useRef<HTMLSpanElement>(null)
+  const topHeader = useRef()
+  const img = useRef()
+  const btt = useRef()
 
   useEffect(() => {
     window.onscroll = () => {
@@ -108,7 +109,7 @@ const Header = (props: Props) => {
             </div>
 
             <div className="">
-              <a href="#" className='flex items-center'>
+              <a href="/cart" className='flex items-center'>
                 <p className='text-xl text-[#ccc]'>Giỏ hàng</p>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="#34c9db" strokeWidth="2">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
@@ -123,7 +124,7 @@ const Header = (props: Props) => {
             <li className='hover:text-[#ccc]'><Link href="/">TRANG CHỦ</Link></li>
             <li className='hover:text-[#ccc]'><Link href="#">GIỚI THIỆU</Link></li>
             <li className='hover:text-[#ccc]'><Link href="/product">SẢN PHẨM</Link></li>
-            <li className='hover:text-[#ccc]'><Link href="#">TIN TỨC</Link></li>
+            <li className='hover:text-[#ccc]'><Link href="/news">TIN TỨC</Link></li>
             <li className='hover:text-[#ccc]'><Link href="#">KHÁCH HÀNG</Link></li>
             <li className='hover:text-[#ccc]'><Link href="#">BẢO HÀNH</Link></li>
           </ul>
