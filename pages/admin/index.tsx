@@ -1,73 +1,13 @@
-import Link from 'next/link'
 import React from 'react'
-import { LayoutProps } from '../../model/layout'
-
-const LayoutAdmin = ({ children }: LayoutProps) => {
-    return (
-        <div>
-            <div className="flex flex-row ">
+import LayoutAdmin from '../../components/layout/admin'
 
 
-                <div className="flex flex-col  space-y-5 justify-between min-h-screen w-60 px-2 py-4 bg-gray-50">
+type Props = {}
 
-                    <div className=" flex items-center justify-between text-gray-600 text-3xl px-5"><b>Reservations</b></div>
-
-                    <div className="flex flex-col flex-auto">
-                        <div className="p-2 hover:bg-pink-100">
-                            <Link href={'/admin'} >
-                                <div className="flex flex-row space-x-3">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-pink-700" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
-                                    </svg>
-                                    <h4 className="font-bold text-gray-500 hover:text-pink-600 ">Dashboard</h4>
-                                </div>
-                            </Link>
-
-                        </div>
-                        <div className="p-2 hover:bg-pink-100 ">
-                            <Link href={'/admin/products'} >
-                                <div className="flex flex-row space-x-3 ">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-pink-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
-                                    </svg>
-                                    <h4 className="font-regular text-gray-500 hover:text-pink-600">Products</h4>
-                                </div></Link>
-
-                        </div>
-                        <div className="p-2 hover:bg-pink-100">
-                            <Link href={''} >
-                                <div className="flex flex-row space-x-3">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-pink-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                                    </svg>
-                                    <h4 className="font-regular text-gray-500 hover:text-pink-600">Users</h4>
-                                </div>
-                            </Link>
-
-                        </div>
-
-                    </div>
-
-                    <div className="flex flex-col ">
-                        <button className="rounded-full bg-pink-500 py-2 text-white text-lg">Logout</button>
-
-                    </div>
-
-
-                </div>
-
-
-                <div className="flex-auto ">
-                    <div className="flex flex-col">
-                       
-                        <div className="bg-blue-50 min-h-screen">
-                            <div className='mt-8 sm:grid-cols-2 p-4 '>
-                                {children}
-                            </div>
-
-                            {/* <div className=" mt-8 grid lg:grid-cols-3 sm:grid-cols-2 p-4 gap-10 ">
+const AdminPage = (props: Props) => {
+  return (
+      <div>
+        <div className=" mt-8 grid lg:grid-cols-3 sm:grid-cols-2 p-4 gap-10 ">
                                 <div className="flex items-center justify-between p-5 bg-white rounded shadow-sm">
                                     <div>
                                         <div className="text-sm text-gray-400 ">Check in Today</div>
@@ -231,15 +171,10 @@ const LayoutAdmin = ({ children }: LayoutProps) => {
                                         </tbody>
                                     </table>
                                 </div>
-                            </div>*/}
-                        </div> 
-                    </div>
-                </div>
-            </div>
-            
-            
-        </div>
-    )
+                            </div>
+      </div>
+  )
 }
+AdminPage.Layout = LayoutAdmin
 
-export default LayoutAdmin
+export default AdminPage
