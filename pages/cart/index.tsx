@@ -6,7 +6,7 @@ type Props = {}
 const Cart = (props: Props) => {
     return (
         <div className="">
-            <div className="mx-auto w-[1170px] flex">
+            <div className="mx-auto max-w-[1170px] flex">
                 <div className="w-full z-10 right-0 h-full overflow-x-hidden transform translate-x-0 transition ease-in-out duration-700" id="checkout">
                     <div className="w-full pl-4 pr-10 md:pr-4 md:py-12 py-8 bg-white">
                         <p className="text-5xl font-bold leading-10 text-gray-800 pt-3">Giỏ hàng</p>
@@ -90,7 +90,7 @@ const Cart = (props: Props) => {
                         </div>
                     </div>
                 </div>
-                <div className="xl:w-2/3 md:w-1/3 xl:w-1/4 bg-gray-100 h-[500px] mt-8 sticky top-[150px]">
+                <div className="xl:w-1/3 md:w-2/3 xl:w-2/3 bg-gray-100 h-[500px] mt-8 sticky top-[150px]">
                     <div className="py-8 px-2">
                         <div>
                             <p className="text-2xl font-bold leading-9 text-gray-800">Tóm tắt đơn hàng</p>
