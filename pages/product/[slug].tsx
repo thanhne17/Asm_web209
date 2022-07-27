@@ -90,13 +90,13 @@ const ProductDetai = (props: Props) => {
 
 
     return (
-        <div className='w-[1170px] mx-auto py-8'>
+        <div className='max-w-[1170px] mx-auto py-8'>
             <div className="bg-white">
-                <div className="pt-6">
+                <div className="pt-6 p-4 sm:p-0">
                     <BreadCrumds />
                     {/* Image gallery */}
-                    <div className="mt-6 flex">
-                        <div className="lg:block w-[40%] mr-12">
+                    <div className="mt-6 sm:flex">
+                        <div className="lg:block sm:w-[40%] sm:mr-12">
                             <Image
                                 layout='responsive'
                                 width="100%"

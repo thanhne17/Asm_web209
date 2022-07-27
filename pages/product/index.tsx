@@ -46,7 +46,7 @@ const Product = (props: Props) => {
 
     return (
         <main className='sm:py-4 p-4'>
-            <div className="max-w-[1170px] mx-auto flex justify-center pt-[20px] pb-[20px]">
+            <div className="max-w-[1170px] mx-auto flex sm:justify-start justify-center pt-[20px] pb-[20px]">
                 <div>
                     <BreadCrumds />
                 </div>

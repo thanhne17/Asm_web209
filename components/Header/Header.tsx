@@ -145,6 +145,9 @@ const Header = (props: Props) => {
               {show ?
                 <>
                   <div className="absolute bg-[#fff] min-w-[180px] rounded shadow-xl border overflow-hidden select-none animate-[fade_0.2s] z-50">
+                    <div className="flex">
+                      <ProductSearch />
+                    </div>
                     <ul className=''>
                       <li onClick={autoCloseMenu} className='hover:text-[#fff] hover:bg-[#333] px-2'>
                         <Link href="/">
@@ -244,7 +247,7 @@ const Header = (props: Props) => {
       <div onClick={() => {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
-      }} ref={btt} className="fixed bottom-[20px] right-[20px] hidden p-2 bg-black rounded-full cursor-pointer">
+      }} ref={btt} className="fixed z-50 bottom-[20px] right-[20px] hidden p-2 bg-black rounded-full cursor-pointer">
         <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="white" strokeWidth="2">
           <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
         </svg>
