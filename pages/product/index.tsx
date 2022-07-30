@@ -45,32 +45,13 @@ const Product = (props: Props) => {
     </div>;
 
     return (
-        <main className='py-4'>
-            <div className="w-[1170px] mx-auto flex justify-between pt-[20px] pb-[20px]">
-                <div className="">
-                    <div>
-                        <BreadCrumds />
-                    </div>
-                    <div>
-                        <i className="fa-solid fa-bars"></i> Lọc
-                    </div>
-                </div>
-                <div className="pt-[20px] flex items-center">
-                    <div className="mr-[20px]">
-                        Hiển thị 1-20 trong 38 kết quả
-                    </div>
-                    <div className="border">
-                        <select name="" id="">
-                            <option value="">Thứ tự sản phẩm</option>
-                            <option value="">Thứ tự sản phẩm</option>
-                            <option value="">Thứ tự sản phẩm</option>
-                            <option value="">Thứ tự sản phẩm</option>
-                            <option value="">Thứ tự sản phẩm</option>
-                        </select>
-                    </div>
+        <main className='sm:py-4 p-4'>
+            <div className="max-w-[1170px] mx-auto flex justify-center pt-[20px] pb-[20px]">
+                <div>
+                    <BreadCrumds />
                 </div>
             </div>
-            <div className="container grid gap-4 grid-cols-4 w-[1170px] mx-auto">
+            <div className="container grid sm:gap-4 sm:grid-cols-4 grid-cols-2 gap-2 max-w-[1170px] mx-auto">
                 {data?.data.map((item, index) => {
                     return (
                         <div key={index} className="shadow hover:translate-y-[-5px] hover:shadow-xl duration-200 overflow-hidden">
