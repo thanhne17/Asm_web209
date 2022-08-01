@@ -8,7 +8,7 @@ import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {
   return (
-    <div className="h-[1000px]">
+    <div className="">
       <Slide />
     </div>
   )

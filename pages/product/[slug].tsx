@@ -4,7 +4,6 @@ import { RadioGroup } from '@headlessui/react'
 import BreadCrumds from '../../components/BreadCrumd'
 import { detail, getAll, list } from '../../api/product'
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next'
-import { type } from 'os'
 import Image from 'next/image'
 
 type Props = {}
