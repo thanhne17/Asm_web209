@@ -107,7 +107,7 @@ const Register = (props: Props) => {
                   >
                     Đăng nhập
                   </button>
-                  <p className="text-red-600 hover:text-red-700 focus:text-red-700 transition duration-300 ease-in-out">
+                  <p className="text-red-600 hover:text-red-700 focus:text-red-700 transition duration-200 ease-in-out">
                     <Link
                       href="/auth/register"
                     >Đăng kí
