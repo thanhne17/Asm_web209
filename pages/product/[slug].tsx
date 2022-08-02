@@ -74,6 +74,9 @@ const ProductDetai = (props: Props) => {
     const [selectedColor, setSelectedColor] = useState(product.colors[0])
     const [selectedSize, setSelectedSize] = useState(product.sizes[2])
 
+    console.log(props);
+    
+
     function addCommas(nStr: any) {
         nStr += '';
         let x = nStr.split('.');
