@@ -1,20 +1,34 @@
 import useSWR from "swr";
-import { create, list } from "../api/product";
-interface IProduct {
-    id?: number;
-    name: string;
-}
+import { create, list, remove, update } from "../api/product";
+import { ProductType } from "../types/products";
+
 const useProducts = () => {
-    const { data, error, mutate } = useSWR("/products", list);
+    const getall = async (url: string) => {
+        const {data} = await list(url)
+        return data
+    }
+    const { data, error, mutate } = useSWR("/products", getall,  );
 
     // create
-    const create = async (item: IProduct) => {
-        const product = await create(item);
-        // mutate([...data, product]);
+    const add = async (item: ProductType) => {
+        const {data : products} = await create(item);
+        return ([...data, products]);
+    };
+    const dele = async (id) => {
+        const {data} = await remove(id);
+        return data;    
+    };
+    const edit = async (item: ProductType) => {
+        const {data : products} = await update(item);
+        return data;
     };
 
+
     return {
-        create,
+        add,
+        getall,
+        dele,
+        edit,
         data,
         error,
     };

@@ -3,11 +3,14 @@ import React from 'react'
 import BreadCrumds from '../../components/BreadCrumd'
 import SiteLayout from '../../components/layout/SiteLayout'
 import useProducts from '../../Hook/use-product'
+import useSWR from 'swr'
 
 type Props = {}
 
 const Product = (props: Props) => {
-    const { data, error, create } = useProducts();
+    const { data, error, add, getall } = useProducts();
+    if(!data) return <div>Loading...</div>
+    if(error) return <div>Error</div>
 
     function addCommas(nStr: any) {
         nStr += '';
@@ -52,7 +55,7 @@ const Product = (props: Props) => {
                 </div>
             </div>
             <div className="container grid sm:gap-4 sm:grid-cols-4 grid-cols-2 gap-2 max-w-[1170px] mx-auto">
-                {data?.data.map((item, index) => {
+                {data.map((item, index) => {
                     return (
                         <div key={index} className="shadow hover:translate-y-[-5px] hover:shadow-xl duration-200 overflow-hidden">
                             <Link href={`/product/${item?.slug}`}>
