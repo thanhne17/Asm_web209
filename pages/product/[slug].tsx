@@ -4,7 +4,6 @@ import { RadioGroup } from '@headlessui/react'
 import BreadCrumds from '../../components/BreadCrumd'
 import { detail, getAll, list } from '../../api/product'
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next'
-import { type } from 'os'
 import Image from 'next/image'
 
 type Props = {}
@@ -74,6 +73,9 @@ function classNames(...classes) {
 const ProductDetai = (props: Props) => {
     const [selectedColor, setSelectedColor] = useState(product.colors[0])
     const [selectedSize, setSelectedSize] = useState(product.sizes[2])
+
+    console.log(props);
+    
 
     function addCommas(nStr: any) {
         nStr += '';

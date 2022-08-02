@@ -54,15 +54,15 @@ const Product = (props: Props) => {
             <div className="container grid sm:gap-4 sm:grid-cols-4 grid-cols-2 gap-2 max-w-[1170px] mx-auto">
                 {data?.data.map((item, index) => {
                     return (
-                        <div key={index} className="shadow hover:translate-y-[-5px] hover:shadow-xl duration-200 overflow-hidden">
+                        <div key={index} className="shadow hover:translate-y-[-5px] hover:shadow-2xl duration-200 overflow-hidden">
                             <Link href={`/product/${item?.slug}`}>
                                 <a>
                                     <div className="img h-[300px] w-[300px]">
                                         <img className='h-full' src={item?.image[0]} alt="" />
                                     </div>
-                                    <div className="text-center pt-[20px] pb-[10px]">
-                                        <h3>{item?.name}</h3>
-                                        <p>{
+                                    <div className="py-[15px] px-2">
+                                        <h3 className='font-semibold'>{item?.name}</h3>
+                                        <p className='text-[green]'>{
                                             addCommas(item?.price) + " VNĐ"
                                         }</p>
                                     </div>
