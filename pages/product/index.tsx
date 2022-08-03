@@ -7,8 +7,8 @@ import useProducts from '../../Hook/use-product'
 type Props = {}
 
 const Product = (props: Props) => {
-    const { data, error, create } = useProducts();
-
+    const { data, error } = useProducts();
+    
     function addCommas(nStr: any) {
         nStr += '';
         let x = nStr.split('.');
@@ -52,7 +52,7 @@ const Product = (props: Props) => {
                 </div>
             </div>
             <div className="container grid sm:gap-4 sm:grid-cols-4 grid-cols-2 gap-2 max-w-[1170px] mx-auto">
-                {data?.data.map((item, index) => {
+                {data?.map((item, index) => {
                     return (
                         <div key={index} className="shadow hover:translate-y-[-5px] hover:shadow-2xl duration-200 overflow-hidden">
                             <Link href={`/product/${item?.slug}`}>

@@ -21,9 +21,10 @@ const Register = (props: Props) => {
   const router = useRouter()
   const onSubmit: SubmitHandler<formInput> = (data) => {
     signin(data)
-      .then(() => {
+      .then((res) => {        
         toartSuccess.current.classList.toggle("hidden")
         toartSuccess.current.classList.toggle("block")
+        localStorage.setItem("user", JSON.stringify(res.user))
       })
       .then(() => {
         router.push("/")

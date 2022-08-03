@@ -2,7 +2,16 @@ import axios from "axios";
 
 
 const instance = axios.create({
-    baseURL: "http://localhost:4000/api"
+    baseURL: "http://localhost:4000/api/"
 })
+
+instance.interceptors.response.use(
+    function (response) {
+        return response.data;
+    },
+    function (error) {
+        return Promise.reject(error);
+    }
+);
 
 export default instance

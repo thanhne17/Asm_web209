@@ -1,3 +1,4 @@
+import axios from "axios";
 import useSWR from "swr";
 import { create, list } from "../api/product";
 interface IProduct {
@@ -5,12 +6,13 @@ interface IProduct {
     name: string;
 }
 const useProducts = () => {
-    const { data, error, mutate } = useSWR("/products", list);
+    const fetcher = (args) => axios.get(args).then(res => res.data)
+    const { data, error, mutate } = useSWR("http://localhost:4000/api/products", fetcher);
 
     // create
     const create = async (item: IProduct) => {
         const product = await create(item);
-        // mutate([...data, product]);
+        mutate([...data, product]);
     };
 
     return {
