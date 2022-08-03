@@ -1,8 +1,10 @@
+import axios from "axios";
 import useSWR from "swr";
 import { create, list, remove, update } from "../api/product";
 import { ProductType } from "../types/products";
 
 const useProducts = () => {
+<<<<<<< HEAD
     const getall = async (url: string) => {
         const {data} = await list(url)
         return data
@@ -21,6 +23,15 @@ const useProducts = () => {
     const edit = async (item: ProductType) => {
         const {data : products} = await update(item);
         return data;
+=======
+    const fetcher = (args) => axios.get(args).then(res => res.data)
+    const { data, error, mutate } = useSWR("http://localhost:4000/api/products", fetcher);
+
+    // create
+    const create = async (item: IProduct) => {
+        const product = await create(item);
+        mutate([...data, product]);
+>>>>>>> cec8d9660d5377e434196777e44eae2ba70dce74
     };
 
 

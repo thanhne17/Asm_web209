@@ -3,6 +3,7 @@ import React from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { update } from '../../../api/product'
 import LayoutAdmin from '../../../components/layout/admin';
+import useProducts from '../../../Hook/use-product';
 
 type Props = {}
 type forminput = {
@@ -12,6 +13,9 @@ type forminput = {
   }
 const ProductEdit = (props: Props) => {
     const {register, handleSubmit, formState: {errors}} = useForm();
+    const {data, error, getall, edit } = useProducts()
+    if(!data) return <div>Loading...</div>
+    if(error) return <div>Error</div>
 
     const suasp: SubmitHandler<forminput> = ( data: any) => {
   console.log(data.image[0]);

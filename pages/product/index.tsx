@@ -8,10 +8,15 @@ import useSWR from 'swr'
 type Props = {}
 
 const Product = (props: Props) => {
+<<<<<<< HEAD
     const { data, error, add, getall } = useProducts();
     if(!data) return <div>Loading...</div>
     if(error) return <div>Error</div>
 
+=======
+    const { data, error } = useProducts();
+    
+>>>>>>> cec8d9660d5377e434196777e44eae2ba70dce74
     function addCommas(nStr: any) {
         nStr += '';
         let x = nStr.split('.');
@@ -49,23 +54,27 @@ const Product = (props: Props) => {
 
     return (
         <main className='sm:py-4 p-4'>
-            <div className="max-w-[1170px] mx-auto flex justify-center pt-[20px] pb-[20px]">
+            <div className="max-w-[1170px] mx-auto flex sm:justify-start justify-center pt-[20px] pb-[20px]">
                 <div>
                     <BreadCrumds />
                 </div>
             </div>
             <div className="container grid sm:gap-4 sm:grid-cols-4 grid-cols-2 gap-2 max-w-[1170px] mx-auto">
+<<<<<<< HEAD
                 {data.map((item, index) => {
+=======
+                {data?.map((item, index) => {
+>>>>>>> cec8d9660d5377e434196777e44eae2ba70dce74
                     return (
-                        <div key={index} className="shadow hover:translate-y-[-5px] hover:shadow-xl duration-200 overflow-hidden">
+                        <div key={index} className="shadow hover:translate-y-[-5px] hover:shadow-2xl duration-200 overflow-hidden">
                             <Link href={`/product/${item?.slug}`}>
                                 <a>
                                     <div className="img h-[300px] w-[300px]">
                                         <img className='h-full' src={item?.image[0]} alt="" />
                                     </div>
-                                    <div className="text-center pt-[20px] pb-[10px]">
-                                        <h3>{item?.name}</h3>
-                                        <p>{
+                                    <div className="py-[15px] px-2">
+                                        <h3 className='font-semibold'>{item?.name}</h3>
+                                        <p className='text-[green]'>{
                                             addCommas(item?.price) + " VNĐ"
                                         }</p>
                                     </div>

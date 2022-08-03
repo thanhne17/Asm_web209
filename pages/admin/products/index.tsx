@@ -6,8 +6,11 @@ import useProducts from '../../../Hook/use-product'
 import { ProductType } from '../../../types/products'
 import useSWR from 'swr'
 
+type ProductProps = {
+    products: any[]
+}
 
-const ProductsAdmin = () => {
+const ProductsAdmin = (products: ProductProps) => {
     const {data, error, getall, dele } = useProducts()
     if(!data) return <div>Loading...</div>
     if(error) return <div>Error</div>
@@ -31,10 +34,10 @@ const ProductsAdmin = () => {
                                             Name
                                         </th>
                                         <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                            Image
+                                            Price
                                         </th>
                                         <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                            Handle
+                                            Image
                                         </th>
                                         <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                             
@@ -42,7 +45,7 @@ const ProductsAdmin = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {data.map((item, index) => (
+                                    {products.map((item, index) => (
                                         <tr className="border-b" key={item._id}>
                                             <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{index + 1}</td>
                                             <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
@@ -52,7 +55,7 @@ const ProductsAdmin = () => {
                                                 {item.price}
                                             </td>
                                             <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                @mdo 
+                                                <img src={item.iamge} alt="" /> 
                                             </td>
                                             <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                                 <button onClick={() => dele(`${item._id}`)} >Xóa</button> <br />
@@ -79,7 +82,7 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
     const data = await (await fetch('http://localhost:4000/api/products')).json();
     return {
         props: {
-            products: data.map((item: ProductType) => ({ _id: item._id, name: item.name }))
+            products: data.map((item: ProductType) => ({ _id: item._id, name: item.name, image : item.image, price: item.price }))
         }
     }
 }

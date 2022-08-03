@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import React, { useEffect, useRef, useState } from 'react'
-import { NavLink } from 'react-router-dom'
 import styles from "./header.module.css"
 import Tippy from "@tippyjs/react/headless"
 import "tippy.js/dist/tippy.css"
@@ -10,11 +9,24 @@ import ProductSearch from '../Search'
 type Props = {}
 
 const Header = (props: Props) => {
+  const [status, setStatus] = useState(false)
+  const [user, setUser] = useState({});
   const [show, setShow] = useState(false);
   const header = useRef<HTMLSpanElement>(null)
   const topHeader = useRef<HTMLDivElement>(null)
   const img = useRef<HTMLDivElement>(null)
   const btt = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const getUser = JSON.parse(localStorage.getItem("user"))
+    if (getUser == {} || getUser == null) {
+      setStatus(false)
+    }
+    else {
+      setStatus(true)
+    }
+    setUser(getUser)
+  }, [])
 
   useEffect(() => {
     window.onscroll = () => {
@@ -72,18 +84,39 @@ const Header = (props: Props) => {
                 </li>
               </ul>
               <ul className='flex'>
-                <li className='flex items-center'>
-                  <Link href="/auth">
-                    <a className='text-white text-xs'>
-                      Đăng nhập/
-                    </a>
-                  </Link>
-                  <Link href="/auth">
-                    <a className='text-white text-xs'>
-                      Đăng kí
-                    </a>
-                  </Link>
-                </li>
+                {status ? (
+                  <li className="inline-block group relative cursor-default">
+                    <div className=" flex items-center">
+                      <img className=' w-[25px] rounded-full' src={user?.image ? user?.image : "https://member.imagineacademy.microsoft.com/sites/all/themes/custom/ita_members/images/microsoft-img.png"} alt="" />
+                      <span className='text-white pl-2 text-2xl font-medium'>{user?.name}</span>
+                    </div>
+                    <div className="header__user z-10 shadow-xl absolute top-[30px] hidden left-0 w-[200%] group-hover:block bg-[#333]">
+                      <ul className=''>
+                        <li className='p-4 hover:bg-[#fff] duration-300 cursor-pointer hover:text-[#333] text-white duration-100'><Link className='text-2xl block w-full' href="/user/profile">Tài khoản của tôi</Link></li>
+                        <li className='p-4 hover:bg-[#fff] duration-300 cursor-pointer hover:text-[#333] text-white duration-100'><Link className='text-2xl block w-full' href="/cart">Đơn mua</Link></li>
+                        <li onClick={() => {
+                          setStatus(false)
+                          // logOut()
+                        }} className='p-4 hover:bg-[#fff] duration-300 cursor-pointer hover:text-[#333] text-white duration-100 text-xl block w-full'>Đăng xuất</li>
+                      </ul>
+                    </div>
+                  </li>
+                ) : (
+                  <div className="inline-block">
+                    <li className='flex items-center'>
+                      <Link href="/auth">
+                        <a className='text-white text-xs'>
+                          Đăng nhập/
+                        </a>
+                      </Link>
+                      <Link href="/auth">
+                        <a className='text-white text-xs'>
+                          Đăng kí
+                        </a>
+                      </Link>
+                    </li>
+                  </div>
+                )}
               </ul>
             </nav>
           </div>
@@ -112,7 +145,7 @@ const Header = (props: Props) => {
                 <Link href="/cart">
                   <a className='flex items-center'>
                     <p className='text-xl text-[#ccc]'>Giỏ hàng</p>
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="#34c9db" strokeWidth="2">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 hover:fill-[#34c9db] duration-300" fill="none" viewBox="0 0 24 24" stroke="#34c9db" strokeWidth="2">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                     </svg>
                   </a>
@@ -145,6 +178,9 @@ const Header = (props: Props) => {
               {show ?
                 <>
                   <div className="absolute bg-[#fff] min-w-[180px] rounded shadow-xl border overflow-hidden select-none animate-[fade_0.2s] z-50">
+                    <div className="flex">
+                      <ProductSearch />
+                    </div>
                     <ul className=''>
                       <li onClick={autoCloseMenu} className='hover:text-[#fff] hover:bg-[#333] px-2'>
                         <Link href="/">
@@ -244,7 +280,7 @@ const Header = (props: Props) => {
       <div onClick={() => {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
-      }} ref={btt} className="fixed bottom-[20px] right-[20px] hidden p-2 bg-black rounded-full cursor-pointer">
+      }} ref={btt} className="fixed z-50 bottom-[20px] right-[20px] hidden p-2 bg-black rounded-full cursor-pointer">
         <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="white" strokeWidth="2">
           <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
         </svg>
