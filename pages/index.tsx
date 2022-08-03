@@ -10,7 +10,7 @@ import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {
   const { data, error, create } = useProducts();
-
+     
   function addCommas(nStr: any) {
     nStr += '';
     let x = nStr.split('.');
