@@ -6,12 +6,10 @@ import useProducts from '../../../Hook/use-product'
 import { ProductType } from '../../../types/products'
 import useSWR from 'swr'
 
-type ProductProps = {
-    products: any[]
-}
 
-const ProductsAdmin = (products: ProductProps) => {
-    const {data, error, getall, dele } = useProducts()
+
+const ProductsAdmin = () => {
+    const {data, error, dele } = useProducts()
     if(!data) return <div>Loading...</div>
     if(error) return <div>Error</div>
     
@@ -45,7 +43,7 @@ const ProductsAdmin = (products: ProductProps) => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {products.map((item, index) => (
+                                    {data?.map((item, index) => (
                                         <tr className="border-b" key={item._id}>
                                             <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{index + 1}</td>
                                             <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
@@ -55,7 +53,7 @@ const ProductsAdmin = (products: ProductProps) => {
                                                 {item.price}
                                             </td>
                                             <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                <img src={item.iamge} alt="" /> 
+                                                <img src={item.image} alt="" className='w-[100px] h-[100px]' /> 
                                             </td>
                                             <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                                 <button onClick={() => dele(`${item._id}`)} >Xóa</button> <br />
@@ -78,13 +76,13 @@ const ProductsAdmin = (products: ProductProps) => {
     )
 }
 
-export const getStaticProps: GetStaticProps = async (context: GetStaticPropsContext) => {
-    const data = await (await fetch('http://localhost:4000/api/products')).json();
-    return {
-        props: {
-            products: data.map((item: ProductType) => ({ _id: item._id, name: item.name, image : item.image, price: item.price }))
-        }
-    }
-}
+// export const getStaticProps: GetStaticProps = async (context: GetStaticPropsContext) => {
+//     const data = await (await fetch('http://localhost:4000/api/products')).json();
+//     return {
+//         props: {
+//             products: data.map((item: ProductType) => ({ _id: item._id, name: item.name, image : item.image, price: item.price }))
+//         }
+//     }
+// }
 ProductsAdmin.Layout = LayoutAdmin
 export default ProductsAdmin

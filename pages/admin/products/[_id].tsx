@@ -13,7 +13,7 @@ type forminput = {
   }
 const ProductEdit = (props: Props) => {
     const {register, handleSubmit, formState: {errors}} = useForm();
-    const {data, error, getall, edit } = useProducts()
+    const {data, error, edit } = useProducts()
     if(!data) return <div>Loading...</div>
     if(error) return <div>Error</div>
 

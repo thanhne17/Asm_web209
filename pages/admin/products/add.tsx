@@ -6,16 +6,13 @@ import useProducts from '../../../Hook/use-product'
 import axios from 'axios'
 import { create } from '../../../api/product'
 
-
-type Props = {}
 type forminput = {
-  name: string,
-  price: number,
-  image: string,
+
 }
 
-const AddProducts = (props: Props) => {
+const AddProducts = () => {
   const {register, handleSubmit, formState: {errors}} = useForm();
+  const {add, data, error } = useProducts()
 
   const themsp: SubmitHandler<forminput> = ( data: any) => {
 console.log(data.image[0]);
@@ -36,7 +33,7 @@ console.log(data.image[0]);
     }).then((res) => {
       data.image = res.data.url 
       try {
-        create(data)
+        add(data)
 
       } catch (error) {
         
@@ -68,7 +65,7 @@ console.log(data.image[0]);
                                 <input type="text" placeholder='Product name' className='border p-2 w-full' name="" id="" />
                               </div>
                               <div>
-                                <button>add</button>
+                                <button className=''>add</button>
                               </div>
                             </form>
                         </div>
