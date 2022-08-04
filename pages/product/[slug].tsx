@@ -66,11 +66,11 @@ const ProductDetai = (props: Props) => {
                     </div>
             }
 
-            <div className="basis-2/6">
+            <div className="basis-2/6 hidden sm:block">
                 <Selling />
             </div>
 
-            <div className="ml-8 pl-8 border-l">
+            <div className="sm:ml-8 sm:pl-8 border-l">
                 <div className="">
                     {/* Image gallery */}
                     <div className="sm:flex p-4 sm:p-0">
