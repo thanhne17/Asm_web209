@@ -3,28 +3,20 @@ import Link from 'next/link'
 import React from 'react'
 import LayoutAdmin from '../../../components/layout/admin'
 import useProducts from '../../../Hook/use-product'
-import { ProductType } from '../../../types/products'
+
 import useSWR from 'swr'
+import useUsers from '../../../Hook/users'
 
 
 
-const ProductsAdmin = () => {
-    const {data, error, dele } = useProducts()
+const UsersAdmin = () => {
+    const {data, error, dele } = useUsers()
     if(!data) return <div>Loading...</div>
     if(error) return <div>Error</div>
-
-    const remove = (item: any) =>{
-        const confirm = window.confirm(`Ban co muon xoa: ${item.name}`)
-        if(confirm){
-            dele(`${item._id}`)
-        }
-    }
     
     return (
         <div>
-            <div className='mb-5 '>
-            <Link href={'/admin/products/add'}><button className='px-3 py-2 bg-[#EC4899] text-white font-bold rounded hover:bg-pink-400 '>Add product</button></Link>
-            </div>
+           
             <div className="flex flex-col bg-white border rounded">
                 <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
@@ -50,21 +42,21 @@ const ProductsAdmin = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {data?.map((item, index) => (
-                                        <tr className="border-b" key={item._id}>
+                                    {data?.map((user, index) => (
+                                        <tr className="border-b" key={user._id}>
                                             <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{index + 1}</td>
                                             <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                {item.name}
+                                                {user.name}
                                             </td>
                                             <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap ">
-                                                {item.price}
+                                                {user.email}
                                             </td>
+                                            {/* <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                <img src={user.image} alt="" className='w-[100px] h-[100px]' /> 
+                                            </td> */}
                                             <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                <img src={item.image} alt="" className='w-[100px] h-[100px]' /> 
-                                            </td>
-                                            <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap my-9 grid">
-                                                <button className=' bg-red-600 text-white rounded hover:bg-red-800 mb-4  ' onClick={() => remove(item)} >Xóa</button> 
-                                                <Link className='' href={`/admin/products/${item.slug}`}>edit</Link>
+                                                <button onClick={() => dele(`${user._id}`)} >Xóa</button> <br />
+                                                <Link href={`/admin/products/${user._id}`}>edit</Link>
                                             </td>
                                         </tr>
                                     ))}
@@ -77,8 +69,8 @@ const ProductsAdmin = () => {
             </div>
         </div>
 
-        // <div> {products.map( item => (
-        //     <div key={item._id}><Link href={`/products/${item._id}`}>{item.name}</Link></div>
+        // <div> {products.map( user => (
+        //     <div key={user._id}><Link href={`/products/${user._id}`}>{user.name}</Link></div>
         //   ))}</div>
     )
 }
@@ -87,9 +79,9 @@ const ProductsAdmin = () => {
 //     const data = await (await fetch('http://localhost:4000/api/products')).json();
 //     return {
 //         props: {
-//             products: data.map((item: ProductType) => ({ _id: item._id, name: item.name, image : item.image, price: item.price }))
+//             products: data.map((user: ProductType) => ({ _id: user._id, name: user.name, image : user.image, price: user.price }))
 //         }
 //     }
 // }
-ProductsAdmin.Layout = LayoutAdmin
-export default ProductsAdmin
+UsersAdmin.Layout = LayoutAdmin
+export default UsersAdmin
