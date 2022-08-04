@@ -76,23 +76,24 @@ const ProductDetai = (props: Props) => {
                     <div className="sm:flex p-4 sm:p-0">
                         <div className="basis-1/2">
                             <div onClick={()=>{setScale(!scale)}} className="lg:block sm:mr-12">
-                                <Image
+                                {/* <Image
                                     layout='responsive'
                                     width="100%"
                                     height="100%"
                                     src={props.data?.image[0]}
                                     alt=""
                                     className="object-center object-cover rounded-lg"
-                                />
+                                /> */}
+                                <img src={props.data?.image[0]}  className="object-center object-cover rounded-lg mt-6" alt="" />
                             </div>
                         </div>
                         <div className="flex-1 pt-4">
                             <BreadCrumds />
-                            <div className="lg:col-span-2">
-                                <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">{props.data?.name}</h1>
+                            <div className="lg:col-span-2 pt-3">
+                                <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl ">{props.data?.name}</h1>
                             </div>
                             {/* Options */}
-                            <div className="mt-4 lg:mt-0 lg:row-span-3">
+                            <div className="mt-4 lg:mt-0 lg:row-span-3 pt-3">
                                 <h2 className="sr-only">Product information</h2>
                                 <p className="text-3xl text-gray-900">{addCommas(props.data?.price)} VNĐ</p>
                             </div>

@@ -156,7 +156,7 @@ const Header = (props: Props) => {
           <div className="max-w-[800px] mx-auto py-4 font-bold">
             <ul className='flex justify-evenly'>
               <li className='hover:text-[#ccc]'><Link href="/">TRANG CHỦ</Link></li>
-              <li className='hover:text-[#ccc]'><Link href="#">GIỚI THIỆU</Link></li>
+              <li className='hover:text-[#ccc]'><Link href="/intro">GIỚI THIỆU</Link></li>
               <li className='hover:text-[#ccc]'><Link href="/product">SẢN PHẨM</Link></li>
               <li className='hover:text-[#ccc]'><Link href="/news">TIN TỨC</Link></li>
               <li className='hover:text-[#ccc]'><Link href="#">KHÁCH HÀNG</Link></li>
