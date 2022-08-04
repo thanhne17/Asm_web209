@@ -18,15 +18,16 @@ const useProducts = () => {
         mutate (data.filter(item => item._id !== id));    
     };
 
-    const edit = async (item: ProductType) => {
-        const {data : products} = await update(item);
-        return data;
+    const edit = async (item) => {
+        const product = await update(item);
+        return ([...data, product]);
     };
 
 
     return {
         add,
         dele,
+        edit,
         data,
         error,
     };

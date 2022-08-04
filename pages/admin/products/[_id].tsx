@@ -36,7 +36,7 @@ const ProductEdit = (props: Props) => {
       }).then((res) => {
         data.image = res.data.url 
         try {
-         update(data)
+         edit(data)
         } catch (error) {
           
         }
@@ -77,5 +77,7 @@ const ProductEdit = (props: Props) => {
     </div>
   )
 }
+
+
 ProductEdit.Layout = LayoutAdmin
 export default ProductEdit
