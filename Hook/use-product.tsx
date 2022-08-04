@@ -25,6 +25,7 @@ const useProducts = () => {
 
 
     return {
+        edit,
         add,
         dele,
         data,

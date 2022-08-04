@@ -62,9 +62,9 @@ const ProductsAdmin = () => {
                                             <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                                 <img src={item.image} alt="" className='w-[100px] h-[100px]' /> 
                                             </td>
-                                            <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                <button onClick={() => remove(item)} >Xóa</button> <br />
-                                                <Link href={`/admin/products/${item._id}`}>edit</Link>
+                                            <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap my-9 grid">
+                                                <button className=' bg-red-600 text-white rounded hover:bg-red-800 mb-4  ' onClick={() => remove(item)} >Xóa</button> 
+                                                <Link className='' href={`/admin/products/${item.slug}`}>edit</Link>
                                             </td>
                                         </tr>
                                     ))}
