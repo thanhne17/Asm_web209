@@ -8,15 +8,8 @@ import useSWR from 'swr'
 type Props = {}
 
 const Product = (props: Props) => {
-<<<<<<< HEAD
-    const { data, error, add, getall } = useProducts();
-    if(!data) return <div>Loading...</div>
-    if(error) return <div>Error</div>
-
-=======
     const { data, error } = useProducts();
     
->>>>>>> cec8d9660d5377e434196777e44eae2ba70dce74
     function addCommas(nStr: any) {
         nStr += '';
         let x = nStr.split('.');
@@ -60,11 +53,7 @@ const Product = (props: Props) => {
                 </div>
             </div>
             <div className="container grid sm:gap-4 sm:grid-cols-4 grid-cols-2 gap-2 max-w-[1170px] mx-auto">
-<<<<<<< HEAD
-                {data.map((item, index) => {
-=======
                 {data?.map((item, index) => {
->>>>>>> cec8d9660d5377e434196777e44eae2ba70dce74
                     return (
                         <div key={index} className="shadow hover:translate-y-[-5px] hover:shadow-2xl duration-200 overflow-hidden">
                             <Link href={`/product/${item?.slug}`}>

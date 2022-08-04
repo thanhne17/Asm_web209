@@ -49,7 +49,7 @@ const Home: NextPage = () => {
             <p className="mb-[20px]">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam.</p>
           </div>
           <div className=" grid grid-cols-3 gap-4">
-            {data?.data.map((item, index) => {
+            {data?.map((item, index) => {
               return (
                 <div key={index} className="shadow hover:translate-y-[-5px] hover:shadow-2xl duration-200 overflow-hidden">
                   <Link href={`/product/${item?.slug}`}>

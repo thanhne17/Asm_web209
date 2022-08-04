@@ -10,3 +10,7 @@ export const signin = (data: UserType) => {
     const url = "/signin";
     return instance.post(url, data)
 }
+export const remove = (_id: number) => {
+    const url = `user/${_id}`
+    return instance.delete(url)
+}
