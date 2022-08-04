@@ -97,7 +97,7 @@ const Home: NextPage = () => {
               <Link href={`/product/${item?.slug}`}>
                 <a>
                   <div className="img ">
-                    <img className='w-[460px]' src={item?.image[0]} alt="" />
+                    <img className='w-[460px] h-[250px]' src={item?.image[0]} alt="" />
                   </div>
                   <div className="text-center pt-[20px] pb-[10px] opacity-75">
                     <h3 className='font-semibold'>{item?.name}</h3>
