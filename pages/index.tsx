@@ -7,11 +7,12 @@ import SiteLayout from '../components/layout/SiteLayout'
 import Sale from '../components/sale'
 import Selling from '../components/selling'
 import Slide from '../components/Slide'
+import Sliderr from '../components/slider'
 import useProducts from '../Hook/use-product'
 import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {
-  const { data, error, create } = useProducts();
+  const { data, error} = useProducts();
      
   function addCommas(nStr: any) {
     nStr += '';
@@ -90,27 +91,7 @@ const Home: NextPage = () => {
         <h3 className=" font-bold text-xl text-center pb-[10px]">GỖ LIỀN TẤM</h3>
         <p className="mb-[20px] text-center ">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam.</p>
       </div>
-      <div className="grid grid-cols-5  gap-5 pl-[15px]  pr-[15px]">
-        {data?.map((item, index) => {
-          return (
-            <div key={index} className="content-item-img  overflow-hidden hover:translate-y-[-5px] hover:shadow-md duration-200 ">
-              <Link href={`/product/${item?.slug}`}>
-                <a>
-                  <div className="img ">
-                    <img className='w-[460px] h-[250px]' src={item?.image[0]} alt="" />
-                  </div>
-                  <div className="text-center pt-[20px] pb-[10px] opacity-75">
-                    <h3 className='font-semibold'>{item?.name}</h3>
-                    <p className='text-[green]'>{
-                      addCommas(item?.price) + " VNĐ"
-                    }</p>
-                  </div>
-                </a>
-              </Link>
-            </div>
-          )
-        })}
-      </div>
+      <Sliderr />
       <div className="mt-[100px]">
         <h3 className=" font-bold text-xl text-center pb-[10px]">TƯỢNG GỖ PHONG THỦY</h3>
         <p className="mb-[20px] text-center ">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam.</p>
