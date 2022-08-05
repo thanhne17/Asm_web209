@@ -31,7 +31,6 @@ const ProductSearch = (props: Props) => {
     const input = useRef<HTMLSpanElement>(null)
     const typingTimeoutRef = useRef(null);
 
-    const { searchPr} = useProducts();
 
     function handlerSearchChange(e) {
         const value = e.target.value

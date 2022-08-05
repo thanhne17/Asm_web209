@@ -1,5 +1,4 @@
 import React from 'react'
-
 import { LayoutProps } from '../../model/layout'
 import Footer from '../Footer/Footer'
 import Header from '../Header/Header'

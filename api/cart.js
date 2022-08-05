@@ -1,4 +1,4 @@
-import intance from "./intance"
+import intance from "./instance"
 
 const addCart = (data) => {
     const url = "/cart";
@@ -6,7 +6,7 @@ const addCart = (data) => {
 }
 
 const getCarts = () => {
-    const url = "/cart";
+    const url = "/carts";
     return intance.get(url)
 }
 
