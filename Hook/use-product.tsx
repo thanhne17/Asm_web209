@@ -24,7 +24,7 @@ const useProducts = () => {
 
     const searchPr = async (query: string) => {
         const product = await searchProduct(query)
-        return product
+        mutate(product)
     };
 
 

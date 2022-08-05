@@ -12,7 +12,7 @@ import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {
   const { data, error, create } = useProducts();
-     
+
   function addCommas(nStr: any) {
     nStr += '';
     let x = nStr.split('.');
@@ -26,48 +26,50 @@ const Home: NextPage = () => {
     return x1 + x2;
   }
   return (
-    <div className="container w-[1170px] mx-auto h-[auto]">
+    <div className="container max-w-[1170px] mx-auto h-[auto]">
       <Slide />
-      <div className="flex mt-6 ">
-        <div className="w-[20%] mt-[5px]">
+      <div className="sm:flex mt-6 ">
+        <div className="hidden sm:block sm:w-[20%] mt-[5px]">
           <Selling />
           <Sale />
         </div>
-        <div className="w-[80%] mt-[5px] ml-[30px]">
-          <div className="flex">
-            <div className="w-[50%] pr-[10px]">
+        <div className="sm:w-[80%] mt-[5px] sm:ml-[30px]">
+          <div className="flex flex-col p-4 sm:flex-row sm:p-0">
+            <div className="sm:w-[50%] sm:pr-[10px] cursor-pointer">
               <img src="http://mauweb.monamedia.net/dogotaynguyen/wp-content/uploads/2018/08/h3-banner4.jpg"
                 alt="" />
             </div>
-            <div className="w-[50%] pl-[10px]">
+            <div className="sm:w-[50%] sm:pl-[10px] cursor-pointer sm:pt-0 pt-4">
               <img src="http://mauweb.monamedia.net/dogotaynguyen/wp-content/uploads/2018/08/h3-banner5.jpg"
                 alt="" />
             </div>
           </div>
-          <div>
-            <h3 className="font-bold text-xl mb-2 mt-[30px]">SẢN PHẨM TIÊU BIỂU</h3>
-            <p className="mb-[20px]">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam.</p>
-          </div>
-          <div className=" grid grid-cols-3 gap-4">
-            {data?.map((item, index) => {
-              return (
-                <div key={index} className="shadow hover:translate-y-[-5px] hover:shadow-2xl duration-200 overflow-hidden">
-                  <Link href={`/product/${item?.slug}`}>
-                    <a>
-                      <div className="img h-[300px] w-[300px]">
-                        <img className='h-full' src={item?.image[0]} alt="" />
-                      </div>
-                      <div className="py-[15px] px-2 text-center">
-                        <h3 className='font-semibold'>{item?.name}</h3>
-                        <p className='text-[green]'>{
-                          addCommas(item?.price) + " VNĐ"
-                        }</p>
-                      </div>
-                    </a>
-                  </Link>
-                </div>
-              )
-            })}
+          <div className="p-2">
+            <div>
+              <h3 className="font-bold text-xl mb-2 mt-[30px] text-center sm:text-left">SẢN PHẨM TIÊU BIỂU</h3>
+              <p className="mb-[20px]">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam.</p>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+              {data?.map((item, index) => {
+                return (
+                  <div key={index} className="hover:translate-y-[-5px] hover:shadow-2xl duration-200 overflow-hidden">
+                    <Link href={`/product/${item?.slug}`}>
+                      <a>
+                        <div className="img h-[300px] w-[300px]">
+                          <img className='h-full' src={item?.image[0]} alt="" />
+                        </div>
+                        <div className="py-[15px] px-2 text-center">
+                          <h3 className='font-semibold'>{item?.name}</h3>
+                          <p className='text-[green]'>{
+                            addCommas(item?.price) + " VNĐ"
+                          }</p>
+                        </div>
+                      </a>
+                    </Link>
+                  </div>
+                )
+              })}
+            </div>
           </div>
         </div>
 
