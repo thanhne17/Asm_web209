@@ -1,7 +1,7 @@
 import { userAgentFromString } from 'next/server'
 import React, { useRef } from 'react'
 import LayoutAdmin from '../../../components/layout/admin'
-import {SubmitHandler, useForm } from 'react-hook-form'
+import { SubmitHandler, useForm } from 'react-hook-form'
 import useProducts from '../../../Hook/use-product'
 import axios from 'axios'
 import { create } from '../../../api/product'
@@ -13,39 +13,39 @@ type forminput = {
 
 const AddProducts = () => {
   const toartSuccess = useRef<HTMLDivElement>(null)
-  const {register, handleSubmit, formState: {errors}} = useForm();
-  const {add, data, error } = useProducts()
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { add, data, error } = useProducts()
   const router = useRouter()
-  const themsp: SubmitHandler<forminput> = ( data: any) => {
-console.log(data.image[0]);
-   
+  const themsp: SubmitHandler<forminput> = (data: any) => {
+    console.log(data.image[0]);
+
     const file = data.image[0]
     const formData = new FormData()
 
-    formData.append('file', file) 
-    formData.append("upload_preset","hzeskmhn")
+    formData.append('file', file)
+    formData.append("upload_preset", "hzeskmhn")
 
     axios({
       url: 'https://api.cloudinary.com/v1_1/dkhutgvlb/image/upload',
       method: "POST",
       headers: {
-          "Content-Type":"application/x-www-formendcoded",
+        "Content-Type": "application/x-www-formendcoded",
 
       }, data: formData,
     }).then((res) => {
-      data.image = res.data.url 
+      data.image = res.data.url
       try {
-        
+
         toartSuccess.current.classList.toggle("hidden")
         toartSuccess.current.classList.toggle("block")
         add(data)
         router.push("/admin/products")
 
       } catch (error) {
-        
+
       }
     })
-  } 
+  }
   return (
     <div>
       <div ref={toartSuccess} id="toast-success" className="absolute top-5 right-5 flex items-center p-4 mb-4 w-full max-w-xs text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800 hidden" role="alert">
@@ -59,36 +59,41 @@ console.log(data.image[0]);
           <svg aria-hidden="true" className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
         </button>
       </div>
-        <div className="flex flex-col bg-white border rounded">
-                <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
-                    <div className="py-2 inline-block min-w-full   sm:px-6 lg:px-8">
-                        <div className="overflow-hidden">
-                            <form action="" onSubmit={handleSubmit(themsp)} className='p-4'>
-                              <div className='pb-4'>
-                                <label htmlFor="">Name</label> <br />
-                                <input {...register('name')} type="text" placeholder='Product name' className='border p-2 w-full' name="name" id="" />
-                              </div>
-                              <div className='pb-4'>
-                                <label htmlFor="">Price</label> <br />
-                                <input type="text" placeholder='Product name' className='border p-2 w-full' name="price" id="" {...register('price')} />
-                              </div>
-                              <div className='pb-4'>
-                                <label htmlFor="">Image</label> <br />
-                                <input type="file" autoComplete='img' placeholder='Product name' className='border p-2 w-full' name="image" id="" {...register('image')} />
-                                <img src="" id='preview' alt="" />
-                              </div>
-                              <div className='pb-4'>
-                                <label htmlFor="">Name</label> <br />
-                                <input type="text" placeholder='Product name' className='border p-2 w-full' name="" id="" />
-                              </div>
-                              <div>
-                                <button className=''>add</button>
-                              </div>
-                            </form>
+      <div className="flex flex-col bg-white border rounded">
+        <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
+          <div className="py-2 inline-block min-w-full   sm:px-6 lg:px-8">
+            <div className="overflow-hidden">
+              <form action="" onSubmit={handleSubmit(themsp)} className='p-4'>
+                <div className='pb-4'>
+                  <label htmlFor="">Name</label> <br />
+                  <input {...register('name', { required: true, minLength: 8 })} type="text" placeholder='Product name' className='border p-2 w-full' name="name" id="" />
+                  {Object.keys(errors).length !== 0 && (
+                        <div>
+                            {errors.name?.type === "required" && <p className='text-red-600'>Tên sản phẩm không được bỏ trống</p>}
                         </div>
-                    </div>
+                    )}
                 </div>
+                <div className='pb-4'>
+                  <label htmlFor="">Price</label> <br />
+                  <input type="number" placeholder='Product Price' className='border p-2 w-full' name="price" id="" {...register('price')} />
+                </div>
+                <div className='pb-4'>
+                  <label htmlFor="">Image</label> <br />
+                  <input type="file" autoComplete='img' placeholder='Product name' className='border p-2 w-full' name="image" id="" {...register('image')} />
+                  <img src="" id='preview' alt="" />
+                </div>
+                <div className='pb-4'>
+                  <label htmlFor="">Desc</label> <br />
+                  <textarea name="" id="" cols="" rows="10" className='rounded border w-full p-4' {...register('decription')}></textarea>
+                </div>
+                <div>
+                  <button className='rounded-full bg-pink-500 py-2 px-10 text-white text-lg'>Add</button>
+                </div>
+              </form>
             </div>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

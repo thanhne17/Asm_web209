@@ -16,6 +16,7 @@ const ProductsAdmin = () => {
     const remove = (item: any) =>{
         const confirm = window.confirm(`Ban co muon xoa: ${item.name}`)
         if(confirm){
+            
             dele(`${item._id}`)
         }
     }
@@ -62,9 +63,9 @@ const ProductsAdmin = () => {
                                             <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                                 <img src={item.image} alt="" className='w-[100px] h-[100px]' /> 
                                             </td>
-                                            <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap my-9 grid">
-                                                <button className=' bg-red-600 text-white rounded hover:bg-red-800 mb-4  ' onClick={() => remove(item)} >Xóa</button> 
-                                                <Link className='' href={`/admin/products/${item.slug}`}>edit</Link>
+                                            <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap my-9 ">
+                                                <button className=' bg-red-600 text-white rounded hover:bg-red-800 mb-4 px-3 py-2  ' onClick={() => remove(item)} >Xóa</button> <br />
+                                                <button className='rounded bg-blue-600 text-white  hover:bg-blue-800 mb-4 px-3 py-2'><Link  href={`/admin/products/${item.slug}`}>edit</Link></button>
                                             </td>
                                         </tr>
                                     ))}

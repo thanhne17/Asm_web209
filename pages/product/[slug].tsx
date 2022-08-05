@@ -184,7 +184,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 // server
 export const getStaticProps: GetStaticProps<ProductProps> = async (context: GetStaticPropsContext) => {
+    console.log(context);
+    
     const data = await detail(context.params?.slug)
+    console.log(data);
+    
     return {
         props: { data },
         revalidate: 5,
