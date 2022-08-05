@@ -43,7 +43,7 @@ export default function Sliderr() {
                                         <Link href={`/product/${item?.slug}`}>
                                         <a>
                                             <div>
-                                                  <img src={item?.image[0]} alt="sitting area" className="w-[280px] h-[220px]" />
+                                                  <img src={item?.image[0]} alt="sitting area" className="w-[230px] h-[220px]" />
                                             </div>                     
                                             <div className="text-center pt-[20px] pb-[10px] opacity-75 ">
                                                 <h2 className="font-semibold">{item?.name}</h2>
