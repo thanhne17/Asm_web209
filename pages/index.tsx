@@ -12,8 +12,8 @@ import useProducts from '../Hook/use-product'
 import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {
-  const { data, error} = useProducts();
-     
+  const { data, error } = useProducts();
+
   function addCommas(nStr: any) {
     nStr += '';
     let x = nStr.split('.');
