@@ -1,11 +1,10 @@
 import axios from "axios";
 import useSWR from "swr";
-import { create, list, remove, update } from "../api/product";
+import { create, list, remove, searchProduct, update } from "../api/product";
 import { ProductType } from "../types/products";
 
 const useProducts = () => {
     const fetcher = (args) => axios.get(args).then(res => res.data)
-
     const { data, error, mutate } = useSWR("http://localhost:4000/api/products", fetcher);
 
     // create
@@ -23,13 +22,19 @@ const useProducts = () => {
         return data;
     };
 
+    const searchPr = async (query: string) => {
+        const product = await searchProduct(query)
+        mutate(product)
+    };
+
 
     return {
         edit,
         add,
         dele,
+        searchPr,
         data,
-        error,
+        error
     };
 };
 

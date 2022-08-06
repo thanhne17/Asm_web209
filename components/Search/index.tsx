@@ -1,8 +1,9 @@
 import React, { useRef, useState } from 'react'
 import Tippy from "@tippyjs/react/headless"
 import "tippy.js/dist/tippy.css"
-import { searchProduct } from "../../api/product"
 import Link from 'next/link'
+import useProducts from '../../Hook/use-product'
+import { searchProduct } from '../../api/product'
 
 type Props = {}
 
@@ -30,6 +31,7 @@ const ProductSearch = (props: Props) => {
     const input = useRef<HTMLSpanElement>(null)
     const typingTimeoutRef = useRef(null);
 
+
     function handlerSearchChange(e) {
         const value = e.target.value
         setSearch(value)
@@ -39,21 +41,22 @@ const ProductSearch = (props: Props) => {
         }
 
         setLoading(iconLoading)
-        typingTimeoutRef.current = setTimeout(async () => {
+        typingTimeoutRef.current = setTimeout(() => {
             const formValues = {
                 search: value,
             };
-            const { data } = await searchProduct(formValues.search)
-            console.log(data);
-            
-            if (data.length >= 1) {
-                setSearchResult(data)
-                setLoading(btnSearch)
+            const getSearch =async () => {
+                const data = await searchProduct(formValues.search)
+                if (data?.length >= 1) {
+                    setSearchResult(data)
+                    setLoading(btnSearch)
+                }
+                else if(data.length <= 0) {
+                    setSearchResult([])
+                    setLoading(btnSearch)
+                }
             }
-            else if(data.length <= 0) {
-                setSearchResult([])
-                setLoading(btnSearch)
-            }
+            getSearch()
         }, 300);
     }
 

@@ -5,24 +5,25 @@ type Props = {}
 const Intro = (props: Props) => {
     return (
         <div>
-            <div  style={{ backgroundImage: `url(http://mauweb.monamedia.net/dogotaynguyen/wp-content/uploads/2018/07/multi-slider.jpg)` }} className="age-title-inner container align-center text-center flex-row-col medium-flex-wrap mx-auto " >
+            <div style={{ backgroundImage: `url(http://mauweb.monamedia.net/dogotaynguyen/wp-content/uploads/2018/07/multi-slider.jpg)` }} className="age-title-inner container align-center text-center flex-row-col medium-flex-wrap mx-auto p-8" >
                 <div className="title-wrapper uppercase flex-col">
                     <h1 className="entry-title mb-0 text-white">Giới thiệu</h1>
                 </div>
                 <div className="title-content flex-col">
                     <div className="title-breadcrumbs pb-half pt-half ">
                         <nav className="woocommerce-breadcrumb breadcrumbs text-white">
-                            <a href="http://mauweb.monamedia.net/dogotaynguyen">Trang chủ</a>
-                            <span className="divider">&#47;</span> Giới thiệu</nav>
+                            <a href="/">Trang chủ</a>
+                            <span className="divider">&#47;</span> Giới thiệu
+                        </nav>
                     </div>
                 </div>
             </div>
             {/*  */}
             <div className="2xl:mx-auto 2xl:container py-12 px-4 sm:px-6 xl:px-20 2xl:px-0 w-full">
                 <div className="w-11/12 xl:w-2/3 lg:w-2/3 md:w-2/3 mx-auto sm:mb-10 mb-16">
-                <h1 className=" xl:text-5xl md:text-3xl text-xl text-center text-gray-800 font-extrabold mb-5 pt-4">MONA MEDIA</h1>
-                <p className="text-base md:text-lg lg:text-xl text-center text-gray-600 font-normal xl:w-10/12 xl:mx-auto">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh.</p>
-            </div>
+                    <h1 className=" xl:text-5xl md:text-3xl text-xl text-center text-gray-800 font-extrabold mb-5 pt-4">MONA MEDIA</h1>
+                    <p className="text-base md:text-lg lg:text-xl text-center text-gray-600 font-normal xl:w-10/12 xl:mx-auto">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh.</p>
+                </div>
                 {/* text */}
                 <div className="grid grid-rows-1 gap-3 justify-center items-center ">
                     <div className="2xl:mx-auto 2xl:container py-12 px-4 sm:px-6 xl:px-20 2xl:px-0 ">
