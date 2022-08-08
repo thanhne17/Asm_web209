@@ -10,10 +10,11 @@ import Slide from '../components/Slide'
 import Sliderr from '../components/slider'
 import useProducts from '../Hook/use-product'
 import styles from '../styles/Home.module.css'
+import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper';
+
 
 const Home: NextPage = () => {
-  const { data, error} = useProducts();
-     
+  const { data, error } = useProducts();  
   function addCommas(nStr: any) {
     nStr += '';
     let x = nStr.split('.');
@@ -26,9 +27,20 @@ const Home: NextPage = () => {
 
     return x1 + x2;
   }
+
+  const slideList = [
+    "http://mauweb.monamedia.net/dogotaynguyen/wp-content/uploads/2018/08/slideshow1-1024x512.jpg",
+    "https://mauweb.monamedia.net/dogotaynguyen/wp-content/uploads/2018/07/multi-slider.jpg",
+    "http://mauweb.monamedia.net/dogotaynguyen/wp-content/uploads/2018/08/slideshow1-1024x512.jpg",
+    "http://mauweb.monamedia.net/dogotaynguyen/wp-content/uploads/2018/08/slideshow1-1024x512.jpg",
+  ]
   return (
     <div className="container max-w-[1170px] mx-auto h-[auto]">
-      <Slide />
+      <Sliderr
+        slide={slideList}
+        quantity="1"
+        module={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
+      />
       <div className="sm:flex mt-6 ">
         <div className="hidden sm:block sm:w-[20%] mt-[5px]">
           <Selling />
@@ -89,11 +101,16 @@ const Home: NextPage = () => {
         </div>
       </div>
       <hr className="mt-[30px] mb-[100px]" />
-      <div>
-        <h3 className=" font-bold text-xl text-center pb-[10px]">GỖ LIỀN TẤM</h3>
-        <p className="mb-[20px] text-center ">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam.</p>
+      <div className="">
+        <div>
+          <h3 className=" font-bold text-xl text-center pb-[10px]">GỖ LIỀN TẤM</h3>
+          <p className="mb-[20px] text-center ">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam.</p>
+        </div>
+        <Slide 
+          slide={data}
+          quantity= "5"
+          module={[Navigation, Pagination, Scrollbar, A11y, Autoplay]} />
       </div>
-      <Sliderr />
       <div className="mt-[100px]">
         <h3 className=" font-bold text-xl text-center pb-[10px]">TƯỢNG GỖ PHONG THỦY</h3>
         <p className="mb-[20px] text-center ">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam.</p>

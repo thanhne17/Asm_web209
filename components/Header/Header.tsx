@@ -16,6 +16,7 @@ const Header = (props: Props) => {
   const topHeader = useRef<HTMLDivElement>(null)
   const img = useRef<HTMLDivElement>(null)
   const btt = useRef<HTMLDivElement>(null)
+  // const dispatch = useDispatch()
 
   useEffect(() => {
     const getUser = JSON.parse(localStorage.getItem("user"))
@@ -87,17 +88,17 @@ const Header = (props: Props) => {
                 {status ? (
                   <li className="inline-block group relative cursor-default">
                     <div className=" flex items-center">
+                      <span className='pl-2 text-white text-xs'>{user?.name}</span>
                       <img className=' w-[25px] rounded-full' src={user?.image ? user?.image : "https://member.imagineacademy.microsoft.com/sites/all/themes/custom/ita_members/images/microsoft-img.png"} alt="" />
-                      <span className='text-white pl-2 text-2xl font-medium'>{user?.name}</span>
                     </div>
-                    <div className="header__user z-10 shadow-xl absolute top-[30px] hidden left-0 w-[200%] group-hover:block bg-[#333]">
+                    <div className="header__user z-10 shadow-xl absolute top-[25px] hidden left-0 w-[250%] group-hover:block bg-[#333]">
                       <ul className=''>
-                        <li className='p-4 hover:bg-[#fff] duration-300 cursor-pointer hover:text-[#333] text-white duration-100'><Link className='text-2xl block w-full' href="/user/profile">Tài khoản của tôi</Link></li>
-                        <li className='p-4 hover:bg-[#fff] duration-300 cursor-pointer hover:text-[#333] text-white duration-100'><Link className='text-2xl block w-full' href="/cart">Đơn mua</Link></li>
+                        <li className='p-4 hover:bg-[#fff] duration-300 cursor-pointer hover:text-[#333] text-white duration-100 text-xs'><Link className='text-2xl block w-full' href="/user/profile">Tài khoản của tôi</Link></li>
+                        <li className='p-4 hover:bg-[#fff] duration-300 cursor-pointer hover:text-[#333] text-white duration-100 text-xs'><Link className='text-2xl block w-full' href="/cart">Đơn mua</Link></li>
                         <li onClick={() => {
                           setStatus(false)
-                          // logOut()
-                        }} className='p-4 hover:bg-[#fff] duration-300 cursor-pointer hover:text-[#333] text-white duration-100 text-xl block w-full'>Đăng xuất</li>
+                          localStorage.removeItem("user")
+                        }} className='p-4 hover:bg-[#fff] duration-300 cursor-pointer hover:text-[#333] text-white duration-100 text-xs block w-full'>Đăng xuất</li>
                       </ul>
                     </div>
                   </li>
@@ -145,7 +146,7 @@ const Header = (props: Props) => {
                 <Link href="/cart">
                   <a className='flex items-center'>
                     <p className='text-xl text-[#ccc]'>Giỏ hàng</p>
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 hover:fill-[#34c9db] duration-300" fill="none" viewBox="0 0 24 24" stroke="#34c9db" strokeWidth="2">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 hover:translate-y-[-5px] duration-100" fill="none" viewBox="0 0 24 24" stroke="#34c9db" strokeWidth="2">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                     </svg>
                   </a>
@@ -268,9 +269,11 @@ const Header = (props: Props) => {
               </Link>
             </div>
             <div className="flex justify-end flex-1">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="#33c9db" strokeWidth="2">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-              </svg>
+              <Link href="/cart">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="#33c9db" strokeWidth="2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                </svg>
+              </Link>
             </div>
           </div>
         </div>

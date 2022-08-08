@@ -14,4 +14,17 @@ const removeCart = (payload) => {
     }
 }
 
-export {addToCar, removeCart}
+const updateQuantity = (payload) => {
+    return {
+        type: actionType.UPDATE_QUANTITY,
+        payload
+    }
+}
+
+const getCart = () => {
+    return {
+        type: actionType.GET_CART,
+    }
+}
+
+export { addToCar, removeCart, updateQuantity, getCart }

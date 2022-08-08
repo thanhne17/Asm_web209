@@ -5,8 +5,10 @@ import { detail, getAll, list } from '../../api/product'
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next'
 import Image from 'next/image'
 import Selling from '../../components/selling'
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { addToCar, removeCart } from "../../action/cart"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 type Props = {
     data: any
@@ -26,7 +28,6 @@ function classNames(...classes) {
 const ProductDetai = (props: Props) => {
     const [quality, setQuality] = useState(1)
     const [scale, setScale] = useState(true)
-
     const dispatch = useDispatch()
 
     function addCommas(nStr: any) {
@@ -57,6 +58,7 @@ const ProductDetai = (props: Props) => {
         }
 
     }
+
     return (
         <div className='flex max-w-[1170px] mx-auto py-8'>
 
@@ -75,8 +77,8 @@ const ProductDetai = (props: Props) => {
             <div className="sm:ml-8 sm:pl-8 border-l">
                 <div className="">
                     {/* Image gallery */}
-                    <div className="sm:flex p-4 sm:p-0">
-                        <div className="basis-1/2">
+                    <div className="sm:flex sm:p-0 px-4">
+                        <div className="sm:basis-1/2">
                             <div onClick={() => { setScale(!scale) }} className="lg:block sm:mr-12">
                                 {/* <Image
                                     layout='responsive'
@@ -86,10 +88,10 @@ const ProductDetai = (props: Props) => {
                                     alt=""
                                     className="object-center object-cover rounded-lg"
                                 /> */}
-                                <img src={props.data?.image[0]} className="object-center object-cover rounded-lg mt-6" alt="" />
+                                <img src={props.data?.image[0]} className="object-center object-cover rounded-lg w-full" alt="" />
                             </div>
                         </div>
-                        <div className="flex-1 pt-4">
+                        <div className="flex-1 sm:pt-0 pt-4">
                             <BreadCrumds />
                             <div className="lg:col-span-2 pt-3">
                                 <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl ">{props.data?.name}</h1>
@@ -134,14 +136,16 @@ const ProductDetai = (props: Props) => {
                                             uId: JSON.parse(localStorage.getItem("user"))._id,
                                             quantity: quality,
                                             name: props.data?.name,
-                                            price: addCommas(props.data?.price),
+                                            price: props.data?.price,
                                             image: props.data?.image[0]
                                         }))
+                                        toast("Thêm vào giỏ hàng thành công");
                                     }}
                                     type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                     <svg aria-hidden="true" className="mr-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
                                     Thêm vào giỏ hàng
                                 </button>
+                                {/* <ToastContainer /> */}
                             </div>
                         </div>
                     </div>
@@ -198,11 +202,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 // server
 export const getStaticProps: GetStaticProps<ProductProps> = async (context: GetStaticPropsContext) => {
-    console.log(context);
-
     const data = await detail(context.params?.slug)
-    console.log(data);
-
     return {
         props: { data },
         revalidate: 5,
