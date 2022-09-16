@@ -44,6 +44,8 @@ const ProductSearch = (props: Props) => {
                 search: value,
             };
             const { data } = await searchProduct(formValues.search)
+            console.log(data);
+            
             if (data.length >= 1) {
                 setSearchResult(data)
                 setLoading(btnSearch)
