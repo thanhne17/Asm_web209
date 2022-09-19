@@ -5,7 +5,8 @@ import LayoutAdmin from '../../../components/layout/admin'
 import useProducts from '../../../Hook/use-product'
 import { ProductType } from '../../../types/products'
 import useSWR from 'swr'
-
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify'
 
 
 const ProductsAdmin = () => {
@@ -16,8 +17,8 @@ const ProductsAdmin = () => {
     const remove = (item: any) =>{
         const confirm = window.confirm(`Ban co muon xoa: ${item.name}`)
         if(confirm){
-            
             dele(`${item._id}`)
+            .then(()=>{toast("Xóa thành công")})
         }
     }
     

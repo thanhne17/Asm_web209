@@ -7,7 +7,6 @@ import {getAll, update } from '../../../api/product'
 import LayoutAdmin from '../../../components/layout/admin';
 import useProducts from '../../../Hook/use-product';
 import { ProductType } from '../../../types/products';
-
 type Props = {
   data: any
 }
@@ -48,7 +47,9 @@ const ProductEdit = ({ product }: ProductProps) => {
       console.log(data.image)
       }
       update(data)
-      router.push("/admin/products")
+      .then (()=>{
+        router.push("/admin/products")
+      })
     } 
     catch (error) {
       
